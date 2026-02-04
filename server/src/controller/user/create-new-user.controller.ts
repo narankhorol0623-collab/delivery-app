@@ -25,14 +25,9 @@ export const createNewUser = async (req: Request, res: Response) => {
       phoneNumber,
       address,
     });
-    const token = jwt.sign({ _id: newUser.id }, "hello", { expiresIn: "2h" });
-    const decoded = jwt.decode(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTdjMzBmODY4MGY3YTU4ZjJjNDc5NzAiLCJpYXQiOjE3Njk3NDY2ODEsImV4cCI6MTc2OTc1Mzg4MX0.",
-    );
-    const verified = jwt.verify(
-      "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTdjMzBmODY4MGY3YTU4ZjJjNDc5NzAiLCJpYXQiOjE3Njk3NDY2ODEsImV4cCI6MTc2OTc1Mzg4MX0.",
-      "hello",
-    );
+
+    const token = jwt.sign({ _id: newUser._id }, "hello", { expiresIn: "2h" });
+
     await verifyUserEmail(
       email,
       `${process.env.BACKEND_API}/verify-user?token=${token}`,

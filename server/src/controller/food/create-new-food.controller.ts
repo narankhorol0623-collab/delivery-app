@@ -12,14 +12,6 @@ export const createNewFood = async (req: Request, res: Response) => {
       ingredients,
       category,
     });
-    // const existingFood = await FoodModel.findOne({ foodName });
-
-    // if (existingFood) {
-    //   console.error("This food is already exists!");
-    //   res.status(400).json({ message: "This food already exists!" });
-
-    //   return;
-    // }
     await newFood.save();
     res
       .status(200)

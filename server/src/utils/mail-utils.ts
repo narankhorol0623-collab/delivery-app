@@ -1,6 +1,5 @@
 import nodemailer from "nodemailer";
 import { configDotenv } from "dotenv";
-// import jwt from "jsonwebtoken";
 
 configDotenv();
 
@@ -13,13 +12,21 @@ const transport = nodemailer.createTransport({
     pass: APP_PASSWORD,
   },
 });
-export const verifyUserEmail = async (reciver: string, verifyLink: string) => {
-  await transport.sendMail({
-    from: `"food delivery" ${APP_USER_MAIL}`,
-    to: reciver,
-    subject: "Verify user link.",
-    html: `<div style="width: 300px; height: 200px; border-radius: 20px; background-color: blanchedalmond; display: flex; justify-content: center; align-items: center;">
-                <a href="${verifyLink}" target="_blank" class="font-bold text-xl text-pink-500">Verify your Email!</a>
-            </div>`,
-  });
+
+export const verifyUserEmail = async (receiver: string, verifyLink: string) => {
+  try {
+    await transport.sendMail({
+      from: `"Food Delivery" <${APP_USER_MAIL}>`,
+      to: receiver,
+      subject: "Verify user link.",
+      html: `
+        <div style="width: 300px; padding: 20px; border-radius: 20px; background-color: blanchedalmond; text-align: center;">
+          <a href="${verifyLink}" target="_blank" style="font-weight: bold; font-size: 20px; color: #ec4899; text-decoration: none;">
+            Verify your Email!
+          </a>
+        </div>`,
+    });
+  } catch (error) {
+    console.error("Email send failed:", error);
+  }
 };
