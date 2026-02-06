@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 app.use("/food", foodRouter);
-const port = 7000;
+const port = 10000;
 
 app.listen(port, async () => {
   await connectToMongoDB();
