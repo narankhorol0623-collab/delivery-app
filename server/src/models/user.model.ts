@@ -7,6 +7,7 @@ export enum UserRole {
 
 type User = {
   _id: ObjectId;
+  userName: string;
   email: string;
   password: string;
   phoneNumber: string;
@@ -21,6 +22,7 @@ type User = {
 
 const UserSchema = new Schema<User>(
   {
+    userName: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
     phoneNumber: { type: String, required: true },

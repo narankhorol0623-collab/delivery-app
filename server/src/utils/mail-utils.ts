@@ -21,7 +21,8 @@ export const verifyUserEmail = async (receiver: string, verifyLink: string) => {
       subject: "Verify user link.",
       html: `
         <div style="width: 300px; padding: 20px; border-radius: 20px; background-color: blanchedalmond; text-align: center;">
-          <a href="${verifyLink}" target="_blank" style="font-weight: bold; font-size: 20px; color: #ec4899; text-decoration: none;">
+          <a href="${verifyLink}" target="_blank" style="font-weight: bold; font-size: 20px; color: #ec4899; text-decoration: none; 
+      }">
             Verify your Email!
           </a>
         </div>`,

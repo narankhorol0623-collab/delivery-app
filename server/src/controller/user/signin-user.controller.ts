@@ -6,7 +6,10 @@ export const loginUser = async (req: Request, res: Response) => {
     const { email, password } = req.body;
 
     const existingUser = await UserModel.findOne({ email });
-
+    if (!existingUser) {
+      res.status(400).json({ message: "Email or Password in not correct!" });
+      return;
+    }
     const oldPassword = existingUser?.password;
     const isValidPassword = await bcrypt.compare(password, oldPassword!);
 
@@ -16,12 +19,12 @@ export const loginUser = async (req: Request, res: Response) => {
         userInformation: existingUser,
       });
     } else {
-      res.status(400).json({ message: "Email password not correct" });
+      res.status(400).json({ message: "Email or password is not correct!" });
     }
   } catch (error) {
     console.error("Login failure!", error);
     res.status(500).json({
-      message: "Not found",
+      message: "Email or Password not found!",
       error,
     });
   }

@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 
 export const createNewUser = async (req: Request, res: Response) => {
   try {
-    const { email, password, phoneNumber, address } = req.body;
+    const { userName, email, password, phoneNumber, address } = req.body;
 
     const existingUser = await UserModel.findOne({ email });
 
@@ -20,6 +20,7 @@ export const createNewUser = async (req: Request, res: Response) => {
     const hashedPassword = await bcrypt.hash(password, 8);
 
     const newUser = await UserModel.create({
+      userName,
       email,
       password: hashedPassword,
       phoneNumber,

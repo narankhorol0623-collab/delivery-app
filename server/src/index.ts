@@ -1,5 +1,5 @@
 import cors from "cors";
-import express, { Application, Request, Response } from "express";
+import express, { Application } from "express";
 import { configDotenv } from "dotenv";
 import connectToMongoDB from "./mongodb";
 import { userRouter } from "./routers/userRouter";
@@ -14,7 +14,7 @@ app.use(express.json());
 
 app.use("/user", userRouter);
 app.use("/food", foodRouter);
-const port = 7000;                                                                                                            
+const port = 7000;
 
 app.listen(port, async () => {
   await connectToMongoDB();
