@@ -12,8 +12,8 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 
-app.use("/user", userRouter);
-// app.use("/food", foodRouter);
+// app.use("/user", userRouter);
+app.use("/food", foodRouter);
 
 
 const port = 10000;
