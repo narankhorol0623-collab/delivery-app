@@ -12,7 +12,7 @@ export const createNewFood = async (req: Request, res: Response) => {
       ingredients,
       category,
     });
-    await newFood.save();
+
     res
       .status(200)
       .json({ message: "Food created succesfully!", food: newFood });
@@ -27,9 +27,7 @@ export const createNewFoodCategory = async (req: Request, res: Response) => {
     const newCategory = await FoodCategoryModel.create({
       categoryName,
     });
-    await res
-      .status(200)
-      .json({ message: "category created", food: newCategory });
+    res.status(200).json({ message: "category created", food: newCategory });
   } catch (error) {
     console.error("failed", error);
     res.status(200).json({ message: "failed", error });
@@ -45,9 +43,7 @@ export const createNewOrder = async (req: Request, res: Response) => {
       foodOrderItems,
       status,
     });
-    await res
-      .status(200)
-      .json({ message: "category created", food: newCategory });
+    res.status(200).json({ message: "category created", food: newCategory });
   } catch (error) {
     console.error("failed", error);
     res.status(200).json({ message: "failed", error });
