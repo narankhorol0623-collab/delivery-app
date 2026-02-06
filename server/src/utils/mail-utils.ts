@@ -9,7 +9,7 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export const verifyUserEmail = async (receiver: string, verifyLink: string) => {
   await resend.emails.send({
-    from: `"Food Delivery" <${APP_USER_MAIL}>`,
+    from: `onboarding@resend.dev`,
     to: receiver,
     subject: "Verify user link.",
     html: `
