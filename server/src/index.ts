@@ -12,11 +12,12 @@ const app: Application = express();
 app.use(cors());
 app.use(express.json());
 
-// app.use("/user", userRouter);
+app.use("/user", userRouter);
 // app.use("/food", foodRouter);
-const port = 10000;
 
+
+const port = 10000;
+connectToMongoDB();
 app.listen(port, async () => {
-  await connectToMongoDB();
   console.log(`Server is running on port ${port}`);
 });
