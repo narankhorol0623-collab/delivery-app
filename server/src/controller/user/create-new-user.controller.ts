@@ -6,7 +6,7 @@ import jwt from "jsonwebtoken";
 
 export const createNewUser = async (req: Request, res: Response) => {
   try {
-    const { userName, email, password, phoneNumber, address } = req.body;
+    const { userName, email, password, phoneNumber, address, role } = req.body;
 
     const existingUser = await UserModel.findOne({ email });
 
@@ -25,6 +25,7 @@ export const createNewUser = async (req: Request, res: Response) => {
       password: hashedPassword,
       phoneNumber,
       address,
+      role,
     });
 
     const token = jwt.sign({ _id: newUser._id }, "hello", { expiresIn: "2h" });

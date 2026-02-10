@@ -11,7 +11,7 @@ type Food = {
   updatedAt: Date;
 };
 
-const FoodSchema = new Schema<Food>(
+export const FoodSchema = new Schema<Food>(
   {
     foodName: { type: String, required: true },
     price: { type: String, required: true },
