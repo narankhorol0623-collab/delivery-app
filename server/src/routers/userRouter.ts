@@ -5,6 +5,12 @@ import { resetPassword } from "../controller/user/reset-password-request.control
 import { authentication, authorization } from "../middlewares";
 import { UserRole } from "../models";
 import { deleteUser } from "../controller/user/delete-user.controller";
+import { verifyPassword } from "../controller/user/verify-reset-password.controller";
+import {
+  resetOldPasswordFirst,
+  // resetOldPasswordSecond,
+  // resetPasswordThird,
+} from "../controller/user/reset-password.controller";
 
 export const userRouter = Router();
 userRouter.post(
@@ -15,4 +21,8 @@ userRouter.post(
 );
 userRouter.post("/reset-pass-request", resetPassword);
 userRouter.get("/login-user", loginUser);
-userRouter.post("/delete-user-by-id", deleteUser);
+userRouter.delete("/delete-user-by-id/:id", deleteUser);
+userRouter.get("/verify-user", verifyPassword);
+userRouter.get("/reset-pass-first", resetOldPasswordFirst);
+// userRouter.get("/reset-pass-second", resetOldPasswordSecond);
+// userRouter.delete("/third-try-failure", resetPasswordThird);

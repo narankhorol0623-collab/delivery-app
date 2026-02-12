@@ -6,6 +6,7 @@ import {
 } from "../controller";
 import { authentication, authorization } from "../middlewares";
 import { UserRole } from "../models";
+import { deleteFoods } from "../controller/food/delete-food.controller";
 
 export const foodRouter = Router();
 foodRouter.post(
@@ -17,3 +18,4 @@ foodRouter.post(
 
 foodRouter.post("/food-category-creation", createNewFoodCategory);
 foodRouter.post("/order-list", createNewOrder);
+foodRouter.delete("/delete-food-by-id/:id", deleteFoods);
