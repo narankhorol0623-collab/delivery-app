@@ -11,8 +11,7 @@ export const createNewUser = async (req: Request, res: Response) => {
     const existingUser = await UserModel.findOne({ email });
 
     if (existingUser) {
-      console.error("This user is already exists!");
-      res.status(400).json({ message: "This user already exists!" });
+      res.status(400).json({ message: "This user is already exists!" });
 
       return;
     }
@@ -38,7 +37,7 @@ export const createNewUser = async (req: Request, res: Response) => {
       .status(200)
       .json({ message: "User signed up perfectly", user: newUser, token });
   } catch (error) {
-    console.error("Sign up failure!", error);
+    
     res.status(400).json({ message: "Sign up failure!", error });
   }
 };

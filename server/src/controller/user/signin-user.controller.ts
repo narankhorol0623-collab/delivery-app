@@ -9,7 +9,7 @@ export const loginUser = async (req: Request, res: Response) => {
 
     const existingUser = await UserModel.findOne({ email });
     if (!existingUser) {
-      res.status(400).json({ message: "Email or Password in not correct!" });
+      res.status(400).json({ message: "Email or Password is not correct!" });
       return;
     }
     const oldPassword = existingUser?.password;
@@ -28,9 +28,8 @@ export const loginUser = async (req: Request, res: Response) => {
       res.status(400).json({ message: "Email or password is not correct!" });
     }
   } catch (error) {
-    console.error("Login failure!", error);
     res.status(500).json({
-      message: "Email or Password not found!",
+      message: "Error!",
       error,
     });
   }
